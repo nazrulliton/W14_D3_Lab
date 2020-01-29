@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import { promised } from 'q';
+import NewsList from '../components/NewsList'
 
 
 class MusicBox extends Component {
@@ -36,7 +37,8 @@ class MusicBox extends Component {
 
     render(){
         return(
-            <h1>MusicBox</h1>
+            <NewsList news={this.state.news} />
+            
         )
     }
 
