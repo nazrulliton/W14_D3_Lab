@@ -4,51 +4,42 @@ import NewsList from '../components/NewsList';
 import SearchBar from '../components/SearchBar';
 
 
-class MusicBox extends Component {
+
+class NewsBox extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            newsIds: [],
             news: [],
             searchedTitle: ''
         }
         this.handleSearchType = this.handleSearchType.bind(this);
     }
+    handleSearchType(text) {
+        this.setState({ searchedTitle: text })
+    }
     componentDidMount(){
-        // const newsurl= this.state.newsIds.map(newsId => {
-
-        //     return
-        //     "https://hacker-news.firebaseio.com/v0/item/" + newsId + ".json"
-        // })
-
+        // this.searchCountryByInput();
         const idsurl = 'https://hacker-news.firebaseio.com/v0/topstories.json';
         fetch(idsurl)
             .then(res => res.json())
+            .then(ids => ids.slice(1, 20))
             .then (ids => {
                 const promises = ids.map(newsId => {
-                    return fetch("https://hacker-news.firebaseio.com/v0/item/" + newsId + ".json")
+                    return fetch("https://hacker-news.firebaseio.com/v0/item/"+ newsId + ".json")
                             .then(res => res.json());
                 })
                 Promise.all(promises)
                     .then(news => this.setState({news: news}))
             })
         .catch(err => console.log(err))
-     
     }
-    handleSearchType(text){
-        this.setState({searchedTitle: text})
-        
-    }
-
     render(){
         return(
             <div>
-            <SearchBar searchedby={this.handleSearchType}/>
-            <NewsList news={this.state.news} />
+            <SearchBar filterNews={this.searchCountryByInput} searchedby={this.handleSearchType}/>
+            <NewsList news={this.state.news} searchedTitle={this.state.searchedTitle}/>
             </div>
         )
     }
-
 }
-
-export default MusicBox;
+export default NewsBox;
