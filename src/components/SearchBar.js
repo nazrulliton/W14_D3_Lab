@@ -4,7 +4,10 @@ const SearchBar = (props) => {
         props.searchedby(e.target.value)
     }
     return (
-        <input type="text" placeholder="Type title to search" onChange={handleTypeText}></input>
+        <div className="searchBar">
+            <input type="text" placeholder="Type title to search" onChange={handleTypeText}></input>
+        </div>
+        
     );
 }
 export default SearchBar;

@@ -8,13 +8,13 @@ const NewsList =  (props) => {
         const newsItems = props.news.filter(news => news.title.includes(props.searchedTitle))
         news = newsItems.map(news => {
             return (
-                <NewsItem key={news.id} title={news.title} />
+                <NewsItem key={news.id} title={news.title} url={news.url}/>
             )
         })
     } else {
          news = props.news.map(news => {
             return (
-                <NewsItem key={news.id} title={news.title} />
+                <NewsItem key={news.id} title={news.title} url={news.url}/>
             )
         })
     }
