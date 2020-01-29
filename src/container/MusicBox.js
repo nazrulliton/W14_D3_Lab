@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import { promised } from 'q';
-import NewsList from '../components/NewsList'
+import NewsList from '../components/NewsList';
+import SearchBar from '../components/SearchBar';
 
 
 class MusicBox extends Component {
@@ -11,6 +12,7 @@ class MusicBox extends Component {
             news: [],
             searchedTitle: ''
         }
+        this.handleSearchType = this.handleSearchType.bind(this);
     }
     componentDidMount(){
         // const newsurl= this.state.newsIds.map(newsId => {
@@ -33,12 +35,17 @@ class MusicBox extends Component {
         .catch(err => console.log(err))
      
     }
-
+    handleSearchType(text){
+        this.setState({searchedTitle: text})
+        
+    }
 
     render(){
         return(
+            <div>
+            <SearchBar searchedby={this.handleSearchType}/>
             <NewsList news={this.state.news} />
-            
+            </div>
         )
     }
 
