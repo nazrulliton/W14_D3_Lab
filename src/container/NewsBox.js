@@ -35,7 +35,8 @@ class NewsBox extends Component {
     }
     render(){
         return(
-            <div>
+            <div className="header">
+                <header>Hacker News Tracker</header>
             <SearchBar filterNews={this.searchCountryByInput} searchedby={this.handleSearchType}/>
             <NewsList news={this.state.news} searchedTitle={this.state.searchedTitle}/>
             </div>

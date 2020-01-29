@@ -19,7 +19,10 @@ const NewsList =  (props) => {
         })
     }
     return (
-        <Fragment> {news}</Fragment>
+        <Fragment> 
+            <table align="center" className="table">{news}</table>
+            
+            </Fragment>
     )
 }
 export default NewsList;

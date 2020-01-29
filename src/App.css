@@ -8,8 +8,10 @@
 }
 
 .newsItem {
+  padding-left: 10px;
   border: solid white;
   background-color: #ffd8d8;
+  text-align: center;
 }
 
 .searchBar{
@@ -20,8 +22,7 @@
   background-color:#ff7575;
   height: 40px;
   text-align: center;
-  padding-left: 600px;
-  padding-right: 600px;
+  width: 100%;
   
 }
 
@@ -35,4 +36,23 @@ input {
     background-color: transparent;
     font-size: large;
     font-weight: bold;
+}
+
+.header header{
+font-size: large;
+text-align: center;
+height: 40px;
+padding-top: 5px;
+background-color: lightgrey;
+font-weight: bold;
+}
+
+.table {
+  border: solid;
+  width: 800px;
+  overflow-x: scroll;
+}
+
+body {
+  background-color: lightgrey;
 }
